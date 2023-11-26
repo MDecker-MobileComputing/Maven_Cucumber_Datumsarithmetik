@@ -1,3 +1,6 @@
 
 # Verzeichnis, in das Maven seine Ergebnisse schreibt, nicht versionieren
 target/
+
+# Eclipse-Einstellungen ignorieren
+.settings/
