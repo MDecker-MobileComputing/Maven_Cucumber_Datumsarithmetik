@@ -83,7 +83,7 @@ public class StepDefinitions {
      * unter Test das Datum zurückgegeben wird, das mit den restlichen drei Argumenten spezifiziert
      * wird.
      * 
-     * @param deltaTage Anzahl Tage, die auf heutiges Datum zu addieren ist; kann auch negativ sind.
+     * @param deltaTage Anzahl Tage, die auf heutiges Datum zu addieren ist; kann auch negativ sein.
      * @param jahr Vierstellige Jahreszahl?
      * @param monat Monat, 1-12
      * @param tagImMonat Tag im Monat, 1-31
@@ -116,8 +116,10 @@ public class StepDefinitions {
         
         for (Map<String,String> zeile: listOfMaps) {
             
-            int    delta         = Integer.parseInt( zeile.get("Delta") ); // throws NumberFormatException
+        	String deltaString   = zeile.get("Delta"); 
             String datumErwartet = zeile.get("Ergebnis");
+            
+            int delta = Integer.parseInt( deltaString ); // throws NumberFormatException
             
             String ergebnisTatsaechlich = _cut.heutePlusTage(delta);
             assertEquals(datumErwartet, ergebnisTatsaechlich, "Unerwartetes Ergebnis fuer Deltawert " + delta);

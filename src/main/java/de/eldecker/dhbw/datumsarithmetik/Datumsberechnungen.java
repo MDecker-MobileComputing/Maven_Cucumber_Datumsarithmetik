@@ -11,8 +11,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 /**
- * Diese Klasse enthält Hilfsmethoden für Datumsarithmetik
- * mit dem aktuellen Datum als Startdatum.
+ * Diese Klasse enthält Hilfsmethoden für Datumsarithmetik mit dem aktuellen Datum als Startdatum.
  */
 public class Datumsberechnungen {
 
@@ -66,8 +65,8 @@ public class Datumsberechnungen {
     
       
       /**
-       * Addiert Anzahl {@code tage} auf heutiges Datum und gibt das
-       * Ergebnisdatum zurück.
+       * Addiert Anzahl {@code tage} auf heutiges Datum und gibt das Ergebnisdatum
+       * zurück.
        *
        * @param anzahlTage Anzahl Tage, die auf heutiges Datum zu addieren ist;
        *                   kann auch negativ sein.
