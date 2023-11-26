@@ -1,12 +1,17 @@
 package de.eldecker.dhbw.cucumber.datumsarithmetik;
 
+import static java.time.ZoneOffset.UTC;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import de.eldecker.dhbw.datumsarithmetik.Datumsberechnungen;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import io.cucumber.java.en.Then;
 
-import org.junit.jupiter.api.Assertions.*;
+import java.time.Instant;
+import java.time.LocalDate;
+
 
 /**
  * Diese Datei enthält die Implementierung der einzelnen Schritte, die in
@@ -31,8 +36,18 @@ public class StepDefinitions {
         _cut = Datumsberechnungen.getSingletonInstanz();
     }
 
+    /**
+     * Diese Methode wirft eine Exception wenn das spezifizierte Datum nicht
+     * möglich ist, z.B. {@code monat=13}. Als Zeitzone wird UTC (Greenwich-Zeit
+     * ohne Sommerzeit) verwendet.
+     */
     @When("das heutige Datum der <{int}-{int}-{int}> ist")
     public void whenDasHeuteDatumDerIst(Integer jahr, Integer monat, Integer tag) {
+
+        LocalDate localDate = LocalDate.of(jahr, monat, tag);
+        Instant instant = localDate.atStartOfDay().toInstant(UTC);
+
+        _cut.setHeuteDatumForTesting(instant);
     }
 
 
