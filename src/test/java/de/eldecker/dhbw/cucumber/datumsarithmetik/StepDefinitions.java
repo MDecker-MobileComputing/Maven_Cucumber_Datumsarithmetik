@@ -5,13 +5,15 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import de.eldecker.dhbw.datumsarithmetik.Datumsberechnungen;
-
+import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import io.cucumber.java.en.Then;
 
 import java.time.Instant;
 import java.time.LocalDate;
+import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -95,6 +97,31 @@ public class StepDefinitions {
         
         final String erwartetesDatum = String.format("%d-%02d-%02d", jahr, monat, tagImMonat);
         assertEquals(erwartetesDatum, ergebnisDatum);
+    }
+    
+    /**
+     * Führt die in einer Tabelle definierten Additionen von Deltawerten (Spalte 1 der Tabelle) 
+     * auf das heutige Datum aus und vergleicht es mit dem in der zweiten Spalte definierten
+     * Ergebnisdatum. Die Deltawerte können auch negativ sein.
+     * 
+     * @param dataTable Tabelle mit Delta- und Datumswerten. 
+     *                  Die erste Spalte muss die Deltawerte enthalten (int, auch negativ),
+     *                  die zweite das erwartete Datum im Format {@code YYYY-MM-DD}. 
+     */
+    @Then("ergeben sich durch Addition der folgenden Deltawerte folgende Datumswerte")
+    public void thenTabelleDeltaUndDatum(DataTable dataTable) {
+        
+        // jedes Element in der folgenden Liste repräsentiert eine Zeile der Tabelle im Feature-File (ohne Kopfzeile)
+        List<Map<String, String>> listOfMaps = dataTable.asMaps(String.class, String.class);
+        
+        for (Map<String,String> zeile: listOfMaps) {
+            
+            int    delta         = Integer.parseInt( zeile.get("Delta") ); // throws NumberFormatException
+            String datumErwartet = zeile.get("Ergebnis");
+            
+            String ergebnisTatsaechlich = _cut.heutePlusTage(delta);
+            assertEquals(datumErwartet, ergebnisTatsaechlich, "Unerwartetes Ergebnis fuer Deltawert " + delta);
+        }
     }
 
 }

@@ -8,7 +8,6 @@ Feature: Hilfsklasse für Datumsarithmetik
      When das heutige Datum der <2023-11-25> ist
      Then wird als Wochentag "Samstag" zurückgegeben
 
-# TODO: Rückgabe Wochentag als Tabelle überprüfen
 
   Scenario: Morgiges Datum im selben Monat
     Given die API unter Test ist initialisiert
@@ -39,3 +38,14 @@ Feature: Hilfsklasse für Datumsarithmetik
     Given die API unter Test ist initialisiert
      When das heutige Datum der <2023-01-01> ist
      Then ist in <-1> Tagen der <2022-12-31>
+     
+   Scenario: Datum laut Delta aus Tabelle
+    Given die API unter Test ist initialisiert
+     When das heutige Datum der <2023-01-01> ist
+     Then ergeben sich durch Addition der folgenden Deltawerte folgende Datumswerte
+          | Delta  | Ergebnis   |
+          |  10    | 2023-01-11 |
+          |  100   | 2023-04-11 |
+          | -2     | 2022-12-30 |
+          | -100   | 2022-09-23 |
+     # Webseite zum Nachrechnen: https://de.planetcalc.com/410/
