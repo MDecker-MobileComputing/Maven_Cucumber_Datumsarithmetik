@@ -1,6 +1,8 @@
 package de.eldecker.dhbw.cucumber.datumsarithmetik;
 
 import static java.time.ZoneOffset.UTC;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import de.eldecker.dhbw.datumsarithmetik.Datumsberechnungen;
@@ -34,6 +36,7 @@ public class StepDefinitions {
     public void givenApiIstInitialisiert() {
 
         _cut = Datumsberechnungen.getSingletonInstanz();
+        assertNotNull(_cut, "Keine Instant der Klasse unter Test erhalten");
     }
 
     /**
@@ -52,7 +55,10 @@ public class StepDefinitions {
 
 
     @Then("wird als Wochentag {string} zurückgegeben")
-    public void thenWirdAlsWochentagZurueckgegeben(String string) {
+    public void thenWirdAlsWochentagZurueckgegeben(String wochentagErwartet) {
+
+        final String wochentagTatsaechlich = _cut.getWochentagHeute();
+        assertEquals(wochentagErwartet, wochentagTatsaechlich);
     }
 
 }

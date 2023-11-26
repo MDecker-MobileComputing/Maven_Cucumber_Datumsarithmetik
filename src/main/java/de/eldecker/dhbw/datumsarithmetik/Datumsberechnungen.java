@@ -1,5 +1,10 @@
 package de.eldecker.dhbw.datumsarithmetik;
 
+import static java.time.format.TextStyle.FULL;
+import static java.time.ZoneOffset.UTC;
+import static java.util.Locale.GERMAN;
+
+import java.time.DayOfWeek;
 import java.time.Instant;
 
 /**
@@ -44,7 +49,8 @@ public class Datumsberechnungen {
    */
   public String getWochentagHeute() {
 
-    return "";
+    DayOfWeek dayOfWeek = _heuteInstant.atZone(UTC).getDayOfWeek();
+    return dayOfWeek.getDisplayName(FULL, GERMAN);
   }
 
   public String heutePlusTage(int tage) {
