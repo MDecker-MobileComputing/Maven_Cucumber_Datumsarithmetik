@@ -1,7 +1,7 @@
 # Dieses Feature File muss in Gherkin-Syntax geschrieben sein,
 # siehe auch: https://cucumber.io/docs/gherkin/reference/
 
-Feature: Hilfsklasse für Datumsarithmetik für heutigen Tag
+Feature: Hilfsklasse für Datumsarithmetik
 
   Scenario: Heute ist Samstag
     Given die API unter Test ist initialisiert
