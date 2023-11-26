@@ -13,7 +13,12 @@ import org.junit.jupiter.api.Assertions.*;
  * den <i>Feature Files</i> verwendet werden.
  * <br><br>
  *
- * Javadoc für Cucumber-API: https://javadoc.io/doc/io.cucumber/cucumber-java/latest/index.html
+ * Relevante API-Docu:
+ * <ul>
+ *  <li>Cucumber: https://javadoc.io/doc/io.cucumber/cucumber-java/latest/index.html</li>
+ *  <li>Junit, Klasse {@code Assertions}: https://junit.org/junit5/docs/current/api/org.junit.jupiter.api/org/junit/jupiter/api/Assertions.html</li>
+ * </ul>
+ * Javadoc für
  */
 public class StepDefinitions {
 
