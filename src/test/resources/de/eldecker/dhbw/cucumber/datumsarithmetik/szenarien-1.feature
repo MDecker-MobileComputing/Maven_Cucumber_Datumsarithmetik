@@ -38,6 +38,7 @@ Feature: Hilfsklasse für Datumsarithmetik
     Given die API unter Test ist initialisiert
      When das heutige Datum der <2023-01-01> ist
      Then ist in <-1> Tagen der <2022-12-31>
+
      
    Scenario: Datum laut Delta aus Tabelle
     Given die API unter Test ist initialisiert
