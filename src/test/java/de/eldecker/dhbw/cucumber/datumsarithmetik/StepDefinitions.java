@@ -121,7 +121,8 @@ public class StepDefinitions {
             
             int delta = Integer.parseInt( deltaString ); // throws NumberFormatException
             
-            String ergebnisTatsaechlich = _cut.heutePlusTage(delta);
+            String ergebnisTatsaechlich = _cut.heutePlusTage(delta); // Methode unter Test
+            
             assertEquals(datumErwartet, ergebnisTatsaechlich, "Unerwartetes Ergebnis fuer Deltawert " + delta);
         }
     }
