@@ -114,10 +114,10 @@ public class StepDefinitions {
         // jedes Element in der folgenden Liste repräsentiert eine Zeile der Tabelle im Feature-File (ohne Kopfzeile)
         List<Map<String, String>> listOfMaps = dataTable.asMaps(String.class, String.class);
         
-        for (Map<String,String> zeile: listOfMaps) {
+        for (Map<String,String> zeileMap: listOfMaps) {
             
-        	String deltaString   = zeile.get("Delta"); 
-            String datumErwartet = zeile.get("Ergebnis");
+        	String deltaString   = zeileMap.get("Delta"); 
+            String datumErwartet = zeileMap.get("Ergebnis");
             
             int delta = Integer.parseInt( deltaString ); // throws NumberFormatException
             
