@@ -11,16 +11,16 @@
 
     <packaging>jar</packaging>
     
-	<url>https://github.com/MDecker-MobileComputing/Maven_Cucumber_Datumsarithmetik</url>
-	<name>Datumsarithmetrik</name>
-	<inceptionYear>2023</inceptionYear>
-	<description>Datumsarithmetik als Beispiel für BDD mit Cucumber</description>
-	<licenses>
-	    <license>
-	      <name>BSD 3-Clause License</name>
-	      <url>https://opensource.org/license/BSD-3-clause/</url>
-	    </license>
-	</licenses>
+    <url>https://github.com/MDecker-MobileComputing/Maven_Cucumber_Datumsarithmetik</url>
+    <name>Datumsarithmetrik</name>
+    <inceptionYear>2023</inceptionYear>
+    <description>Datumsarithmetik als Beispiel für BDD mit Cucumber</description>
+    <licenses>
+        <license>
+          <name>BSD 3-Clause License</name>
+          <url>https://opensource.org/license/BSD-3-clause/</url>
+        </license>
+    </licenses>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
