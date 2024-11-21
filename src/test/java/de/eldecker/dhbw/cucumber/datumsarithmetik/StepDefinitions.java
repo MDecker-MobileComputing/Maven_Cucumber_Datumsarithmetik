@@ -40,7 +40,7 @@ public class StepDefinitions {
     public void givenApiIstInitialisiert() {
 
         _cut = Datumsberechnungen.getSingletonInstanz();
-        assertNotNull(_cut, "Keine Instant der Klasse unter Test erhalten");
+        assertNotNull( _cut, "Keine Instant der Klasse unter Test erhalten" );
     }
     
 
@@ -56,10 +56,10 @@ public class StepDefinitions {
     @When("das heutige Datum der <{int}-{int}-{int}> ist")
     public void whenDasHeuteDatumDerIst(Integer jahr, Integer monat, Integer tagImMonat) {
 
-        LocalDate localDate = LocalDate.of(jahr, monat, tagImMonat);
-        Instant instant = localDate.atStartOfDay().toInstant(UTC);
+        LocalDate localDate = LocalDate.of( jahr, monat, tagImMonat );
+        Instant instant = localDate.atStartOfDay().toInstant( UTC );
 
-        _cut.setHeuteDatumForTesting(instant);
+        _cut.setHeuteDatumForTesting( instant );
     }
 
     
@@ -74,7 +74,7 @@ public class StepDefinitions {
     public void thenWirdAlsWochentagZurueckgegeben(String wochentagErwartet) {
 
         final String wochentagTatsaechlich = _cut.getWochentagHeute();
-        assertEquals(wochentagErwartet, wochentagTatsaechlich);
+        assertEquals( wochentagErwartet, wochentagTatsaechlich );
     }
     
     
@@ -89,16 +89,17 @@ public class StepDefinitions {
      * @param tagImMonat Tag im Monat, 1-31
      */
     @Then("ist in <{int}> Tagen der <{int}-{int}-{int}>")
-    public void thenIstInNTagen(Integer deltaTage, Integer jahr, Integer monat, Integer tagImMonat) {
+    public void thenIstInNTagen( Integer deltaTage, Integer jahr, Integer monat, Integer tagImMonat ) {
 
         LocalDate.of(jahr, monat, tagImMonat); // wirft DateTimeException, wenn Datum nicht möglich ist
         
-        final String ergebnisDatum = _cut.heutePlusTage(deltaTage);
+        final String ergebnisDatum = _cut.heutePlusTage( deltaTage );
         
-        final String erwartetesDatum = String.format("%d-%02d-%02d", jahr, monat, tagImMonat);
-        assertEquals(erwartetesDatum, ergebnisDatum);
+        final String erwartetesDatum = String.format( "%d-%02d-%02d", jahr, monat, tagImMonat );
+        assertEquals( erwartetesDatum, ergebnisDatum );
     }
     
+
     /**
      * Führt die in einer Tabelle definierten Additionen von Deltawerten (Spalte 1 der Tabelle) 
      * auf das heutige Datum aus und vergleicht es mit dem in der zweiten Spalte definierten
@@ -109,21 +110,21 @@ public class StepDefinitions {
      *                  die zweite das erwartete Datum im Format {@code YYYY-MM-DD}. 
      */
     @Then("ergeben sich durch Addition der folgenden Deltawerte folgende Datumswerte")
-    public void thenTabelleDeltaUndDatum(DataTable dataTable) {
+    public void thenTabelleDeltaUndDatum( DataTable dataTable ) {
         
         // jedes Element in der folgenden Liste repräsentiert eine Zeile der Tabelle im Feature-File (ohne Kopfzeile)
-        List<Map<String, String>> listOfMaps = dataTable.asMaps(String.class, String.class);
+        List<Map<String, String>> listOfMaps = dataTable.asMaps( String.class, String.class );
         
         for (Map<String,String> zeileMap: listOfMaps) {
             
-        	String deltaString   = zeileMap.get("Delta"); 
-            String datumErwartet = zeileMap.get("Ergebnis");
+        	String deltaString   = zeileMap.get( "Delta"    ); 
+            String datumErwartet = zeileMap.get( "Ergebnis" );
             
             int delta = Integer.parseInt( deltaString ); // throws NumberFormatException
             
-            String ergebnisTatsaechlich = _cut.heutePlusTage(delta); // Methode unter Test
+            String ergebnisTatsaechlich = _cut.heutePlusTage( delta ); // Methode unter Test
             
-            assertEquals(datumErwartet, ergebnisTatsaechlich, "Unerwartetes Ergebnis fuer Deltawert " + delta);
+            assertEquals( datumErwartet, ergebnisTatsaechlich, "Unerwartetes Ergebnis fuer Deltawert " + delta );
         }
     }
 

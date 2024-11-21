@@ -10,6 +10,7 @@ import java.time.Instant;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+
 /**
  * Diese Klasse enthält Hilfsmethoden für Datumsarithmetik mit dem aktuellen Datum als Startdatum.
  */
@@ -19,7 +20,7 @@ public class Datumsberechnungen {
       private static Datumsberechnungen sSingletonInstanz = null;
       
       /** Formatierer, um {@code Instant}-Objekte in der Form {@code yyyy-MM-dd} zu formatieren, z.B. "2023-01-01". */ 
-      private static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+      private static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern( "yyyy-MM-dd" );
     
       /** Heutiges Datum; kann mit Methode {@link #setHeuteDatumForTesting(Instant)} geändert werden. */
       private Instant _heuteInstant = Instant.now();
@@ -43,7 +44,7 @@ public class Datumsberechnungen {
        */
       public static Datumsberechnungen getSingletonInstanz() {
     
-          if (sSingletonInstanz == null)  {
+          if ( sSingletonInstanz == null )  {
     
               sSingletonInstanz = new Datumsberechnungen();
           }
@@ -59,8 +60,8 @@ public class Datumsberechnungen {
        */
       public String getWochentagHeute() {
     
-        DayOfWeek dayOfWeek = _heuteInstant.atZone(UTC).getDayOfWeek();
-        return dayOfWeek.getDisplayName(FULL, GERMAN);
+        DayOfWeek dayOfWeek = _heuteInstant.atZone( UTC ).getDayOfWeek();
+        return dayOfWeek.getDisplayName( FULL, GERMAN );
       }
     
       
@@ -75,11 +76,11 @@ public class Datumsberechnungen {
        */
       public String heutePlusTage(int anzahlTage) {
     
-          Duration duration       = Duration.ofDays(anzahlTage);
-          Instant ergebnisInstant = _heuteInstant.plus(duration);
+          Duration duration       = Duration.ofDays( anzahlTage );
+          Instant ergebnisInstant = _heuteInstant.plus( duration );
           
-          LocalDate localDate = ergebnisInstant.atZone(UTC).toLocalDate();
-          return localDate.format(DATE_TIME_FORMATTER);
+          LocalDate localDate = ergebnisInstant.atZone( UTC ).toLocalDate();
+          return localDate.format( DATE_TIME_FORMATTER );
       }
     
       
@@ -89,7 +90,7 @@ public class Datumsberechnungen {
        *
        * @param heuteInstant Neues Datum für "Heute"
        */
-      public void setHeuteDatumForTesting(Instant heuteInstant) {
+      public void setHeuteDatumForTesting( Instant heuteInstant ) {
     
           _heuteInstant = heuteInstant;
       }
