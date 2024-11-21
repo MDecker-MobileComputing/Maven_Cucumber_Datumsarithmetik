@@ -36,7 +36,7 @@ public class StepDefinitions {
     /**
      * Singleton-Instanz der Klasse unter Test wird geholt.
      */
-    @Given("die API unter Test ist initialisiert")
+    @Given( "die API unter Test ist initialisiert" )
     public void givenApiIstInitialisiert() {
 
         _cut = Datumsberechnungen.getSingletonInstanz();
@@ -50,10 +50,12 @@ public class StepDefinitions {
      * ohne Sommerzeit) verwendet.
      * 
      * @param jahr Jahreszahl vierstellig, z.B. 2023
+     * 
      * @param monat Monat als Zahl von 1 bis 12
+     * 
      * @param tagImMonat Tag im Monat, 1-31
      */
-    @When("das heutige Datum der <{int}-{int}-{int}> ist")
+    @When( "das heutige Datum der <{int}-{int}-{int}> ist" )
     public void whenDasHeuteDatumDerIst(Integer jahr, Integer monat, Integer tagImMonat) {
 
         LocalDate localDate = LocalDate.of( jahr, monat, tagImMonat );
@@ -70,7 +72,7 @@ public class StepDefinitions {
      * @param wochentagErwartet Deutscher Wochentag ausgeschrieben, z.B. "Samstag" 
      *                          (der Vergleich ist case-sensitive!)
      */
-    @Then("wird als Wochentag {string} zurückgegeben")
+    @Then( "wird als Wochentag {string} zurückgegeben" )
     public void thenWirdAlsWochentagZurueckgegeben(String wochentagErwartet) {
 
         final String wochentagTatsaechlich = _cut.getWochentagHeute();
@@ -84,11 +86,14 @@ public class StepDefinitions {
      * wird.
      * 
      * @param deltaTage Anzahl Tage, die auf heutiges Datum zu addieren ist; kann auch negativ sein.
+     * 
      * @param jahr Vierstellige Jahreszahl?
+     * 
      * @param monat Monat, 1-12
+     * 
      * @param tagImMonat Tag im Monat, 1-31
      */
-    @Then("ist in <{int}> Tagen der <{int}-{int}-{int}>")
+    @Then( "ist in <{int}> Tagen der <{int}-{int}-{int}>" )
     public void thenIstInNTagen( Integer deltaTage, Integer jahr, Integer monat, Integer tagImMonat ) {
 
         LocalDate.of(jahr, monat, tagImMonat); // wirft DateTimeException, wenn Datum nicht möglich ist
@@ -109,7 +114,7 @@ public class StepDefinitions {
      *                  Die erste Spalte muss die Deltawerte enthalten (int, auch negativ),
      *                  die zweite das erwartete Datum im Format {@code YYYY-MM-DD}. 
      */
-    @Then("ergeben sich durch Addition der folgenden Deltawerte folgende Datumswerte")
+    @Then( "ergeben sich durch Addition der folgenden Deltawerte folgende Datumswerte" )
     public void thenTabelleDeltaUndDatum( DataTable dataTable ) {
         
         // jedes Element in der folgenden Liste repräsentiert eine Zeile der Tabelle im Feature-File (ohne Kopfzeile)
