@@ -56,10 +56,10 @@ public class StepDefinitions {
      * @param tagImMonat Tag im Monat, 1-31
      */
     @When( "das heutige Datum der <{int}-{int}-{int}> ist" )
-    public void whenDasHeuteDatumDerIst(Integer jahr, Integer monat, Integer tagImMonat) {
+    public void whenDasHeuteDatumDerIst( Integer jahr, Integer monat, Integer tagImMonat ) {
 
-        LocalDate localDate = LocalDate.of( jahr, monat, tagImMonat );
-        Instant instant = localDate.atStartOfDay().toInstant( UTC );
+        final LocalDate localDate = LocalDate.of( jahr, monat, tagImMonat );
+        final Instant instant = localDate.atStartOfDay().toInstant( UTC );
 
         _cut.setHeuteDatumForTesting( instant );
     }
@@ -73,7 +73,7 @@ public class StepDefinitions {
      *                          (der Vergleich ist case-sensitive!)
      */
     @Then( "wird als Wochentag {string} zurückgegeben" )
-    public void thenWirdAlsWochentagZurueckgegeben(String wochentagErwartet) {
+    public void thenWirdAlsWochentagZurueckgegeben( String wochentagErwartet ) {
 
         final String wochentagTatsaechlich = _cut.getWochentagHeute();
         assertEquals( wochentagErwartet, wochentagTatsaechlich );
@@ -118,7 +118,7 @@ public class StepDefinitions {
     public void thenTabelleDeltaUndDatum( DataTable dataTable ) {
         
         // jedes Element in der folgenden Liste repräsentiert eine Zeile der Tabelle im Feature-File (ohne Kopfzeile)
-        List<Map<String, String>> listOfMaps = dataTable.asMaps( String.class, String.class );
+        final List<Map<String, String>> listOfMaps = dataTable.asMaps( String.class, String.class );
         
         for (Map<String,String> zeileMap: listOfMaps) {
             
