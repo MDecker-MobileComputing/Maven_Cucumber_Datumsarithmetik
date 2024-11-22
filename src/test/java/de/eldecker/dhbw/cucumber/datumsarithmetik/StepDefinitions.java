@@ -23,7 +23,7 @@ import java.util.Map;
  *
  * Relevante API-Doku:
  * <ul>
- *  <li>Cucumber: https://javadoc.io/doc/io.cucumber/cucumber-java/latest/index.html</li>
+ *  <li>Cucumber: https://javadoc.io/doc/io.cucumber/cucumber-java/latest/io/cucumber/java/en/package-summary.html</li>
  *  <li>Junit, Klasse {@code Assertions}: https://junit.org/junit5/docs/current/api/org.junit.jupiter.api/org/junit/jupiter/api/Assertions.html</li>
  * </ul>
  */
@@ -40,7 +40,7 @@ public class StepDefinitions {
     public void givenApiIstInitialisiert() {
 
         _cut = Datumsberechnungen.getSingletonInstanz();
-        assertNotNull( _cut, "Keine Instant der Klasse unter Test erhalten" );
+        assertNotNull( _cut, "Keine Instanz der Klasse unter Test erhalten" );
     }
     
 
@@ -49,11 +49,11 @@ public class StepDefinitions {
      * möglich ist, z.B. {@code monat=13}. Als Zeitzone wird UTC (Greenwich-Zeit
      * ohne Sommerzeit) verwendet.
      * 
-     * @param jahr Jahreszahl vierstellig, z.B. 2023
+     * @param jahr Jahreszahl vierstellig, z.B. 2024
      * 
      * @param monat Monat als Zahl von 1 bis 12
      * 
-     * @param tagImMonat Tag im Monat, 1-31
+     * @param tagImMonat Tag im Monat, 1 bis 31
      */
     @When( "das heutige Datum der <{int}-{int}-{int}> ist" )
     public void whenDasHeuteDatumDerIst( Integer jahr, Integer monat, Integer tagImMonat ) {
@@ -89,14 +89,14 @@ public class StepDefinitions {
      * 
      * @param jahr Vierstellige Jahreszahl?
      * 
-     * @param monat Monat, 1-12
+     * @param monat Monat, 1 bis 12
      * 
-     * @param tagImMonat Tag im Monat, 1-31
+     * @param tagImMonat Tag im Monat, 1bis 31
      */
     @Then( "ist in <{int}> Tagen der <{int}-{int}-{int}>" )
     public void thenIstInNTagen( Integer deltaTage, Integer jahr, Integer monat, Integer tagImMonat ) {
 
-        LocalDate.of(jahr, monat, tagImMonat); // wirft DateTimeException, wenn Datum nicht möglich ist
+        LocalDate.of( jahr, monat, tagImMonat ); // wirft DateTimeException, wenn Datum nicht möglich ist
         
         final String ergebnisDatum = _cut.heutePlusTage( deltaTage );
         
@@ -129,7 +129,8 @@ public class StepDefinitions {
             
             String ergebnisTatsaechlich = _cut.heutePlusTage( delta ); // Methode unter Test
             
-            assertEquals( datumErwartet, ergebnisTatsaechlich, "Unerwartetes Ergebnis fuer Deltawert " + delta );
+            assertEquals( datumErwartet, ergebnisTatsaechlich, 
+            		      "Unerwartetes Ergebnis fuer Deltawert " + delta );
         }
     }
 
