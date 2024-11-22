@@ -60,7 +60,8 @@ public class Datumsberechnungen {
        */
       public String getWochentagHeute() {
     
-        DayOfWeek dayOfWeek = _heuteInstant.atZone( UTC ).getDayOfWeek();
+        final DayOfWeek dayOfWeek = _heuteInstant.atZone( UTC ).getDayOfWeek();
+        
         return dayOfWeek.getDisplayName( FULL, GERMAN );
       }
     
@@ -76,10 +77,10 @@ public class Datumsberechnungen {
        */
       public String heutePlusTage(int anzahlTage) {
     
-          Duration duration       = Duration.ofDays( anzahlTage );
-          Instant ergebnisInstant = _heuteInstant.plus( duration );
+    	  final Duration duration       = Duration.ofDays( anzahlTage );
+    	  final Instant ergebnisInstant = _heuteInstant.plus( duration );
           
-          LocalDate localDate = ergebnisInstant.atZone( UTC ).toLocalDate();
+    	  final LocalDate localDate = ergebnisInstant.atZone( UTC ).toLocalDate();
           return localDate.format( DATE_TIME_FORMATTER );
       }
     
