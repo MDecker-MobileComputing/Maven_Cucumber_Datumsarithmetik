@@ -4,7 +4,7 @@
 
 clear
 
-mvn clean javadoc:javadoc javadoc:test-javadoc -Dshop=private -DadditionalJOption=-Xdoclint:none
+mvn clean javadoc:javadoc javadoc:test-javadoc -Dshow=private -DadditionalJOption=-Xdoclint:none
 
 echo
 
