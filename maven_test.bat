@@ -1,5 +1,5 @@
 @cls
 
-mvn clean test
+mvnw clean test
 
 @echo.

@@ -1,5 +1,5 @@
 @cls
 
-mvn clean compile
+mvnw clean compile
 
 @echo.
