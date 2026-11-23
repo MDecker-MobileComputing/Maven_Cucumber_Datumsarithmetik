@@ -13,17 +13,17 @@ Feature: Hilfsklasse für Datumsarithmetik
     Given die API unter Test ist initialisiert
      When das heutige Datum der <2023-11-25> ist
      Then ist in <1> Tagen der <2023-11-26>
-      And ist in <2> Tagen der <2023-11-27>
 
   Scenario: Morgiges Datum im nächsten Monat
     Given die API unter Test ist initialisiert
      When das heutige Datum der <2023-11-30> ist
      Then ist in <1> Tagen der <2023-12-01>
      
-  Scenario: Morgiges Datum im nächsten Jahr
+  Scenario: Datum morgen oder später ist im nächsten Jahr
     Given die API unter Test ist initialisiert
      When das heutige Datum der <2023-12-31> ist
      Then ist in <1> Tagen der <2024-01-01>
+      And ist in <2> Tagen der <2024-01-02>
 
   Scenario: Gestriges Datum im selben Monat
     Given die API unter Test ist initialisiert
