@@ -13,6 +13,7 @@ Feature: Hilfsklasse für Datumsarithmetik
     Given die API unter Test ist initialisiert
      When das heutige Datum der <2023-11-25> ist
      Then ist in <1> Tagen der <2023-11-26>
+      And ist in <2> Tagen der <2023-11-27>
 
   Scenario: Morgiges Datum im nächsten Monat
     Given die API unter Test ist initialisiert
