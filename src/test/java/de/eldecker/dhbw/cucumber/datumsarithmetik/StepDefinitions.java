@@ -59,7 +59,7 @@ public class StepDefinitions {
     public void whenDasHeuteDatumDerIst( Integer jahr, Integer monat, Integer tagImMonat ) {
 
         final LocalDate localDate = LocalDate.of( jahr, monat, tagImMonat );
-        final Instant instant = localDate.atStartOfDay().toInstant( UTC );
+        final Instant   instant   = localDate.atStartOfDay().toInstant( UTC );
 
         _cut.setHeuteDatumForTesting( instant );
     }
