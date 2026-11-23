@@ -7,7 +7,7 @@ welche mit [Cucumber](https://cucumber.io/) (BDD) unter Test genommen wird.
 
 <br>
 
-siehe [hier](https://github.com/MDecker-MobileComputing/Python_Datumsarithmetik) für eine Variante mit Python und Behave.
+Siehe [hier](https://github.com/MDecker-MobileComputing/Python_Datumsarithmetik) für eine Variante mit Python und Behave.
 
 <br>
 
